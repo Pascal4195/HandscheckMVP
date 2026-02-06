@@ -8,13 +8,12 @@
         :root { --bg: #0f0f0f; --text: #ffffff; --card: #1a1a1a; --purple: #8a2be2; }
         body.light-theme { --bg: #f0f0f0; --text: #1a1a1a; --card: #ffffff; }
         
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; transition: 0.3s; margin: 0; padding: 20px; text-align: center; }
-        .container { max-width: 450px; margin: 60px auto; background: var(--card); padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; transition: 0.3s; margin: 0; padding: 20px; text-align: center; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        .container { max-width: 450px; width: 100%; margin: 60px auto 20px auto; background: var(--card); padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); box-sizing: border-box; }
         
         select, input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #222; color: white; box-sizing: border-box; }
         body.light-theme input, body.light-theme select { background: #fff; color: #000; border: 1px solid #ccc; }
 
-        /* The Glittering Purple Button */
         .purple-btn {
             width: 100%; padding: 15px; border-radius: 12px; border: none; cursor: pointer;
             background: linear-gradient(45deg, #6a11cb, #a010ff, #6a11cb);
@@ -32,13 +31,19 @@
 
         #theme-btn { position: absolute; top: 20px; right: 20px; background: none; color: var(--text); border: 1px solid var(--text); padding: 5px 15px; border-radius: 20px; cursor: pointer; }
         .verdict-box { margin-top: 30px; padding: 20px; border-radius: 15px; background: rgba(138, 43, 226, 0.1); border: 1px solid var(--purple); display: none; }
+        
+        /* Subtle Trademark Footer */
+        .trademark { margin-top: auto; padding-bottom: 20px; opacity: 0.4; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
+        .trademark a { color: inherit; text-decoration: none; font-weight: bold; }
+        .trademark a:hover { opacity: 1; color: var(--purple); }
     </style>
 </head>
 <body>
     <button id="theme-btn">🌓 Theme</button>
+    
     <div class="container">
-        <h1 style="letter-spacing: -1px;">HandsCheck</h1>
-        <p style="opacity: 0.7;">On-Chain Behavior Analysis</p>
+        <h1 style="letter-spacing: -1px; margin-bottom: 5px;">HandsCheck</h1>
+        <p style="opacity: 0.7; margin-bottom: 30px;">On-Chain Behavior Analysis</p>
         
         <select id="coinType">
             <option value="eth">Ethereum (ETH)</option>
@@ -49,6 +54,10 @@
         <button class="purple-btn" onclick="analyzeWallet()">Analyze Wallet</button>
         
         <div id="result" class="verdict-box"></div>
+    </div>
+
+    <div class="trademark">
+        Created by <a href="https://x.com/zerodollar_Anon" target="_blank">@zerodollar_Anon</a> on X
     </div>
 
     <script>
@@ -71,7 +80,7 @@
                 });
                 const data = await response.json();
                 resDiv.innerHTML = `<div style="color:var(--purple); font-size:1.4rem;">${data.label1}</div>
-                                    <div style="font-weight:bold; margin:5px 0;">${data.label2}</div>
+                                    <div style="font-weight:bold; margin:5px 0; line-height:1.4;">${data.label2}</div>
                                     <div style="font-size:0.9rem; opacity:0.8;">${data.details}</div>`;
             } catch (err) {
                 resDiv.innerHTML = "❌ Connection Error";
