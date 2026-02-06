@@ -52,4 +52,6 @@
             const data = await response.json();
             resDiv.innerHTML = `Verdict: ${data.label1} | ${data.label2}<br><small>${data.details}</small>`;
         }
-    <
+    </script>
+</body>
+</html>
