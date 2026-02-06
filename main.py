@@ -3,15 +3,17 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-import eth  # Imports the file above
+
+# Import both logic files
+import eth
+import btc 
 
 app = FastAPI()
 
-# Get absolute path to the 'static' folder for Render
+# FIX: Absolute paths for Render
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
-# Mount static files and setup templates
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 templates = Jinja2Templates(directory=STATIC_DIR)
 
@@ -24,6 +26,11 @@ async def analyze(request: Request):
     data = await request.json()
     address = data.get("address")
     
-    # This MUST match the function name in eth.py
-    result = eth.get_wallet_verdict(address) 
+    # Logic to detect if it's a BTC address or ETH address
+    # Simple check: BTC addresses often start with '1', '3', or 'bc1'
+    if address.startswith("0x"):
+        result = eth.get_wallet_verdict(address)
+    else:
+        result = btc.get_wallet_verdict(address)
+        
     return result
