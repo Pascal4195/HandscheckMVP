@@ -1,46 +1,36 @@
-# 💎 HandsCheck
+# 🔍 HandsCheck V2: Crypto Wallet Analyzer
 
-**HandsCheck** is a minimalist, on-chain wallet behavior analyzer. It scans Bitcoin (BTC) and Ethereum (ETH) activity over the last 24 hours to give users a blunt, honest verdict on their "hand strength."
-
-Are you **Diamond Hands**, or are you just **Exit Liquidity**?
-
-![HandsCheck Preview](https://img.shields.io/badge/Blockchain-Analysis-blueviolet)
-![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+**HandsCheck** is a specialized tool that analyzes Ethereum and Bitcoin wallet behavior over a 7-day window. It provides a real-time "Verdict" by combining activity levels with holding patterns to identify the psychological profile of a wallet owner.
 
 ---
 
-## 🚀 Features
-
-- **Multi-Chain Support:** Analyze both Bitcoin and Ethereum addresses.
-- **Real-Time Data:** Fetches the most recent transactions using Etherscan and Blockstream APIs.
-- **Behavioral Analysis:** Uses custom logic to determine if a wallet is:
-  - 💎 **Diamond Hands:** No sells, just pure conviction.
-  - 🧻 **Paper Hands:** Sold the dip or panicked early.
-  - 🚪 **Exit Liquidity:** Sold a massive percentage of holdings.
-  - 😬 **Weak Conviction:** Constant indecisive swapping.
-- **Responsive UI:** Dark/Light mode support with a sleek "Glassmorphism" design.
-
----
+## 🚀 New in V2.0
+- **7-Day Deep Scan:** Analyzes transaction history over the last week (~50,400 blocks for ETH / ~1,008 blocks for BTC).
+- **Double-Label Logic:** Assigns a dual status (e.g., *ACTIVE TRADER | DIAMOND HANDS*).
+- **Refactored Engine:** Optimized Python code for faster API processing and cleaner data visualization.
 
 ## 🛠️ Tech Stack
+- **Backend:** Python (FastAPI)
+- **Frontend:** HTML5, CSS3, JavaScript
+- **APIs:** Etherscan (ETH), Blockchain.info (BTC)
+- **Deployment:** Replit / GitHub
 
-- **Backend:** Python, FastAPI, Uvicorn
-- **Data Fetching:** HTTPX (Asynchronous)
-- **Frontend:** HTML5, CSS3 (Vanilla JS)
-- **APIs:** Etherscan (ETH), Blockstream (BTC)
+## ⚙️ Setup & Installation
+1. **Clone the repository:**
+   `git clone https://github.com/YOUR_USERNAME/handscheck.git`
+2. **Install dependencies:**
+   `pip install -r requirements.txt`
+3. **Environment Variables:**
+   Create a secret for `ETHERSCAN_API_KEY` in your hosting environment.
+4. **Run the app:**
+   `python main.py`
 
----
+## 🧠 The Verdict Logic
+The app uses a proprietary scoring system based on the last 7 days:
+- 💎 **Diamond Hands:** Majority of transactions are "Incoming" (Holding).
+- 🧻 **Paper Hands:** High frequency of "Outgoing" transactions (Selling).
+- 🔴 **Degen Trader:** 40+ transactions per week.
+- 🟢 **Patient Holder:** Low-frequency, high-conviction moves.
 
-## 📂 Project Structure
-
-```text
-handscheck/
-├── main.py            # FastAPI Application & Routing
-├── eth.py             # Ethereum Blockchain Logic
-├── btc.py             # Bitcoin Blockchain Logic
-├── verdict.py         # The "Brain" (Scoring Logic)
-├── requirements.txt   # Dependencies
-├── .gitignore         # Safety (Hides .env)
-└── static/            # Frontend Assets
-    └── index.html     # The UI
+## ⚖️ License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
