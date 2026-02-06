@@ -3,11 +3,11 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-import eth  # Your existing eth.py logic
+import eth  # Imports the file above
 
 app = FastAPI()
 
-# FIX: Find the exact location of the static folder
+# Get absolute path to the 'static' folder for Render
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
@@ -23,6 +23,7 @@ async def home(request: Request):
 async def analyze(request: Request):
     data = await request.json()
     address = data.get("address")
-    # Using your existing 7-day logic from eth.py
+    
+    # This MUST match the function name in eth.py
     result = eth.get_wallet_verdict(address) 
     return result
