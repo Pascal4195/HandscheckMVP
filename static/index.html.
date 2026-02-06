@@ -9,7 +9,7 @@
         body.light-theme { --bg: #f5f5f5; --text: #121212; --card: #ffffff; }
         
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; transition: 0.3s; margin: 0; padding: 20px; text-align: center; }
-        .container { max-width: 600px; margin: auto; background: var(--card); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .container { max-width: 60o; background: var(--card); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         input { width: 80%; padding: 12px; border-radius: 8px; border: none; margin-bottom: 20px; }
         button { padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; background: #00ff88; color: #000; font-weight: bold; }
         #theme-btn { position: absolute; top: 20px; right: 20px; background: none; color: var(--text); border: 1px solid var(--text); }
